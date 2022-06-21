@@ -21,17 +21,25 @@ module Api
 
       def create
         transaction = Transaction.new(post_params)
-        if transaction.save
-          render json: ResponseHandler.new({
-                                             code: 0o03,
-                                             success: true,
-                                             data: transaction
-                                           }).response, status: :created
-        else
+        begin
+          if transaction.save
+            render json: ResponseHandler.new({
+                                               code: 0o03,
+                                               success: true,
+                                               data: transaction
+                                             }).response, status: :created
+          else
+            render json: ResponseHandler.new({
+                                               code: 0o00,
+                                               success: false,
+                                               data: transaction.errors.full_messages
+                                             }).response, status: :unprocessable_entity
+          end
+        rescue StandardError => e
           render json: ResponseHandler.new({
                                              code: 0o00,
                                              success: false,
-                                             data: transaction.errors
+                                             data: e.message
                                            }).response, status: :unprocessable_entity
         end
       end
