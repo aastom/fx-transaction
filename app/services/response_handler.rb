@@ -29,11 +29,11 @@ class ResponseHandler
 
   def success_message
     case @code
-    when 0o01
+    when 2000
       'Loaded transations successfully'
-    when 0o02
+    when 2001
       'Loaded transaction successfully'
-    when 0o03
+    when 2002
       'Transaction was successfully created'
     else
       'Success'
@@ -42,7 +42,7 @@ class ResponseHandler
 
   def error_message
     case @code
-    when 900
+    when 3000
       'Transaction could not be created'
     else
       'Error'
