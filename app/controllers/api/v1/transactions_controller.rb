@@ -21,7 +21,7 @@ module Api
 
       def create
         transaction = Transaction.new(post_params)
-        if trasaction.save
+        if transaction.save
           render json: ResponseHandler.new({
                                              code: 0o03,
                                              success: true,
@@ -39,7 +39,7 @@ module Api
       private
 
       def post_params
-        params.permit(:customer_id, :input_amount, :input_currency, :output_currency)
+        params.require(:transaction).permit(:customer_id, :input_amount, :input_currency, :output_currency)
       end
     end
   end
