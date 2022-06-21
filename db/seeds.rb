@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+10.times do
+  Transaction.create({ transaction_id: Faker::Crypto.md5, customer_id: Faker::Crypto.md5,
+                       input_amount: Faker::Commerce.price,
+                       input_currency: Faker::Currency.code,
+                       output_amount: Faker::Commerce.price,
+                       output_currency: Faker::Currency.code })
+end
