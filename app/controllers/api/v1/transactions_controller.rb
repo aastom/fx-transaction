@@ -20,7 +20,7 @@ module Api
                                                     code: 3001,
                                                     success: false,
                                                     data: transaction
-                                                  }).response, status: :ok
+                                                  }).response, status: :not_found
         end
 
         render json: ResponseHandler.new({
