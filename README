@@ -1,1 +1,20 @@
 # fx-transaction
+
+[![FX Transactions CI Tests](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml/badge.svg?branch=develop)](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml)
+
+FX Transactions stores how much money received from the
+customer in the input currency, and how much is paid to the customer in the output currency.
+
+All transactions need the following details:
+
+1. An identifier
+2. A customer ID showing who created the transaction
+3. Input amount and currency
+4. Output amount and currency
+5. Date of transaction
+
+The following three endpoints are available:
+
+1. POST /transactions: create a new transaction
+2. GET /transactions: list all transactions in the system
+3. GET /transactions/<id>: get the specific transaction by ID
