@@ -1,6 +1,6 @@
 # fx-transaction
 
-[![FX Transactions CI Tests](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml/badge.svg?branch=develop)](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml)
+[![FX Transactions CI Tests](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml/badge.svg)](https://github.com/aastom/fx-transaction/actions/workflows/ci-tests.yml)
 
 FX Transactions stores how much money received from the
 customer in the input currency, and how much is paid to the customer in the output currency.
