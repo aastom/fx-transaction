@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace 'api' do
     namespace 'v1' do
-      post 'create', to: 'transactions#create'
+      post 'transactions', to: 'transactions#create'
       get 'transactions', to: 'transactions#index'
       get 'transactions/:id', to: 'transactions#show'
     end
