@@ -22,7 +22,7 @@ module Api
       def create
         transaction = Transaction.new(post_params)
         begin
-          transaction.output_amount = calculate_output_amount(post_params[:input_amount])
+          transaction.output_amount = Transaction.calculate_output_amount(post_params[:input_amount])
           if transaction.save
             puts transaction.to_json
             render json: ResponseHandler.new({
@@ -50,10 +50,6 @@ module Api
 
       def post_params
         params.require(:transaction).permit(:customer_id, :input_amount, :input_currency, :output_currency)
-      end
-
-      def calculate_output_amount(input_amount)
-        input_amount * 2.3
       end
     end
   end
