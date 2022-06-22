@@ -35,12 +35,12 @@ RSpec.describe Transaction, type: :model do
   end
 
   it 'must have an output_amount' do
-    transaction = Transaction.create({ customer_id: Faker::Crypto.md5,
-                                       input_amount: Faker::Commerce.price,
-                                       input_currency: Faker::Currency.code,
-                                       output_currency: Faker::Currency.code })
-
-    expect(transaction).to_not be_valid
+    expect do
+      Transaction.create({ customer_id: Faker::Crypto.md5,
+                           input_amount: Faker::Commerce.price,
+                           input_currency: Faker::Currency.code,
+                           output_currency: Faker::Currency.code })
+    end.to raise_error(ActiveRecord::NotNullViolation)
   end
 
   it 'must have an output_currency' do
