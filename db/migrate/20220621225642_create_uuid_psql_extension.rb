@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUuidPsqlExtension < ActiveRecord::Migration[7.0]
   def self.up
     enable_extension 'uuid-ossp'

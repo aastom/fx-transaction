@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Api
   module V1
+    # TransactionsController contains the endpoints for processing transaction requests.
     class TransactionsController < ApplicationController
       def index
         transactions = Transaction.order('transaction_date DESC')
@@ -12,6 +15,14 @@ module Api
 
       def show
         transaction = Transaction.find_by_transaction_id(params[:id])
+        unless transaction.present?
+          return render json: ResponseHandler.new({
+                                                    code: 3001,
+                                                    success: false,
+                                                    data: transaction
+                                                  }).response, status: :ok
+        end
+
         render json: ResponseHandler.new({
                                            code: 2001,
                                            success: true,

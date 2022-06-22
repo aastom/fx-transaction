@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# ResponseHandler is a class that handles the response to the client.
+# It is used to create a response object that can be returned to the client.
+# This is to help ensure that there's a consistent format for the response.
 class ResponseHandler
   def initialize(params)
     @code = params[:code]
@@ -30,11 +35,11 @@ class ResponseHandler
   def success_message
     case @code
     when 2000
-      'Loaded transations successfully'
+      'Loaded transations successfully.'
     when 2001
-      'Loaded transaction successfully'
+      'Loaded transaction successfully.'
     when 2002
-      'Transaction was successfully created'
+      'Transaction was successfully created.'
     else
       'Success'
     end
@@ -43,7 +48,9 @@ class ResponseHandler
   def error_message
     case @code
     when 3000
-      'Transaction could not be created'
+      'Transaction could not be created!'
+    when 3001
+      'Transaction could not be found!'
     else
       'Error'
     end

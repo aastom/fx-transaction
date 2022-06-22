@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Transaction stores and tracks fx transactions
 class Transaction < ApplicationRecord
   validates :customer_id, :input_amount, :input_currency, :output_currency, presence: true
   validates :input_amount, numericality: true
