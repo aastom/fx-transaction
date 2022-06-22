@@ -9,7 +9,7 @@ module Api
         render json: ResponseHandler.new({
                                            code: 2000,
                                            success: true,
-                                           data: transactions
+                                           data: Transaction.cleanall(transactions)
                                          }).response, status: :ok
       end
 
@@ -26,7 +26,7 @@ module Api
         render json: ResponseHandler.new({
                                            code: 2001,
                                            success: true,
-                                           data: transaction
+                                           data: Transaction.clean(transaction)
                                          }).response, status: :ok
       end
 
@@ -35,11 +35,10 @@ module Api
         begin
           transaction.output_amount = Transaction.calculate_output_amount(post_params[:input_amount])
           if transaction.save
-            puts transaction.to_json
             render json: ResponseHandler.new({
                                                code: 2002,
                                                success: true,
-                                               data: transaction.reload
+                                               data: Transaction.clean(transaction.reload)
                                              }).response, status: :created
           else
             render json: ResponseHandler.new({
@@ -49,6 +48,7 @@ module Api
                                              }).response, status: :unprocessable_entity
           end
         rescue StandardError => e
+          puts e
           render json: ResponseHandler.new({
                                              code: 3000,
                                              success: false,

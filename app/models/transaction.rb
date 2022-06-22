@@ -8,4 +8,12 @@ class Transaction < ApplicationRecord
   def self.calculate_output_amount(input_amount)
     input_amount * 2.3
   end
+
+  def self.clean(transaction)
+    transaction.attributes.except('id')
+  end
+
+  def self.cleanall(transactions)
+    transactions.map { |transaction| clean(transaction) }
+  end
 end
