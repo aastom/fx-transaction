@@ -12,8 +12,16 @@ on:
 jobs:
   # Label of the container job
   container-job:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        ruby: ["3.1"]
+        include:
+          - { os: ubuntu-22.04, ruby: "3.1.0" }
     # Containers should run in Linux based operating systems
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}
     # Service containers to run with `container-job`
     services:
       # Label used to access the service container
@@ -35,15 +43,14 @@ jobs:
     steps:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+        uses: ./
         with:
-          ruby-version: 2.7.0
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
-
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: ruby -v
       - name: Install PostgreSQL 14 client
         run: |
           sudo apt-get -yqq install libpq-dev
