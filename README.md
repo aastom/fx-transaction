@@ -14,7 +14,7 @@ FX-Transaction stores how much money received from the customer in the input cur
 
 ## The following three endpoints are available:
 
-    ### BASE_URL: https://fx-transaction.herokuapp.com/
+### BASE_URL: https://fx-transaction.herokuapp.com/
 
 1.  ### POST /transactions: create a new transaction
 
