@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: fx_transaction_production
-  username: fx_transaction
-  password: <%= ENV["FX_TRANSACTION_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
