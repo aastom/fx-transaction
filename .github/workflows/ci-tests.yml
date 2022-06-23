@@ -3,11 +3,11 @@ on:
   pull_request:
     branches:
       - "develop"
-      - "production"
+      - "production-1.0"
   push:
     branches:
       - "develop"
-      - "production"
+      - "production-1.0"
 
 jobs:
   # Label of the container job
