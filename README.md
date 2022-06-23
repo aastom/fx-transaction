@@ -14,54 +14,118 @@ FX-Transaction stores how much money received from the customer in the input cur
 
 ## The following three endpoints are available:
 
-1. ### POST /transactions: create a new transaction
+1.  ### POST /transactions: create a new transaction
 
-   ```json
-        //Request
+    - Request body:
+
+    ```json
         {
-            "customer_id" : string,// e.g "customer_id": "23e-567d-11e"
-            "input_amount" : float,// e.g "input_amount": 23.45
-            "input_currency": string,// e.g "input_currency": "EUR"
-            "output_currency" :string // e.g "output_currency": "USD"
+            "customer_id" : string,
+            "input_amount" : float,
+            "input_currency": string,
+            "output_currency" :string
         }
+    ```
 
-        //Response
+    > Example request body:
+
+    ```json
+    {
+      "customer_id": "23e-567d-11e",
+      "input_amount": 23.45,
+      "input_currency": "EUR",
+      "output_currency": "USD"
+    }
+    ```
+
+    - Response body:
+
+    ```json
         {
-            "transaction_id" : string, // e.g "transaction_id": "8998-ef8979-13e-788"
-            "transaction_date" : datetime, // e.g "transaction_date": "2020-01-01T00:00:00.000Z"
-            "customer_id" : string, // e.g "customer_id": "23e-567d-11e"
-            "input_amount" : float, // e.g "input_amount": 23.45
-            "input_currency": string, // e.g "input_currency": "EUR"
-            "output_amount" : float, //  e.g "output_amount": 25.55
-            "output_currency": string // e.g "output_currency": "USD"
+            "transaction_id" : string,
+            "transaction_date" : datetime,
+            "customer_id" : string,
+            "input_amount" : float,
+            "input_currency": string,
+            "output_amount" : float,
+            "output_currency": string
         }
-   ```
+    ```
 
-2. ### GET /transactions: list all transactions in the system
-   ```json
-        //Response
-        [
+    > Example response body:
+
+        ```json
             {
-                "transaction_id" : string, // e.g "transaction_id": "8998-ef8979-13e-788"
-                "transaction_date" : datetime, // e.g "transaction_date": "2020-01-01T00:00:00.000Z"
-                "customer_id" : string, // e.g "customer_id": "23e-567d-11e"
-                "input_amount" : float, // e.g "input_amount": 23.45
-                "input_currency": string, // e.g "input_currency": "EUR"
-                "output_amount" : float, //  e.g "output_amount": 25.55
-                "output_currency": string // e.g "output_currency": "USD"
+                "transaction_id" : "transaction_id",
+                "transaction_date" : "2020-01-01T00:00:00.000Z",
+                "customer_id" : "23e-567d-11e",
+                "input_amount" : 23.45,
+                "input_currency": "EUR",
+                "output_amount" : 25.55,
+                "output_currency": "USD"
             }
-        ]
-   ```
-3. ### GET /transactions/<transaction_id>: get the specific transaction by ID
-   ```json
-       //Response
-       {
-            "transaction_id" : string, // e.g "transaction_id": "8998-ef8979-13e-788"
-            "transaction_date" : datetime, // e.g "transaction_date": "2020-01-01T00:00:00.000Z"
-            "customer_id" : string, // e.g "customer_id": "23e-567d-11e"
-            "input_amount" : float, // e.g "input_amount": 23.45
-            "input_currency": string, // e.g "input_currency": "EUR"
-            "output_amount" : float, //  e.g "output_amount": 25.55
-            "output_currency": string // e.g "output_currency": "USD"
+        ```
+
+2.  ### GET /transactions: list all transactions in the system
+
+    - Response body:
+
+    ```json
+            [
+                {
+                    "transaction_id" : string,
+                    "transaction_date" : datetime,
+                    "customer_id" : string,
+                    "input_amount" : float,
+                    "input_currency": string,
+                    "output_amount" : float,
+                    "output_currency": string
+                }
+            ]
+    ```
+
+    > Example response:
+
+    ```json
+    [
+      {
+        "transaction_id": "transaction_id",
+        "transaction_date": "2020-01-01T00:00:00.000Z",
+        "customer_id": "23e-567d-11e",
+        "input_amount": 23.45,
+        "input_currency": "EUR",
+        "output_amount": 25.55,
+        "output_currency": "USD"
+      }
+    ]
+    ```
+
+3.  ### GET /transactions/<transaction_id>: get the specific transaction by ID
+
+    - Response body:
+
+    ```json
+        {
+            "transaction_id" : string,
+            "transaction_date" : datetime,
+            "customer_id" : string,
+            "input_amount" : float,
+            "input_currency": string,
+            "output_amount" : float,
+            "output_currency": string
         }
-   ```
+    ```
+
+    > Example response:
+
+    ```json
+    {
+      "transaction_id": "transaction_id",
+      "transaction_date": "2020-01-01T00:00:00.000Z",
+      "customer_id": "23e-567d-11e",
+      "input_amount": 23.45,
+      "input_currency": "EUR",
+      "output_amount": 25.55,
+      "output_currency": "USD"
+    }
+    ```
