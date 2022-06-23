@@ -16,15 +16,15 @@ FX-Transaction stores how much money received from the customer in the input cur
 
 1.  ### POST /transactions: create a new transaction
 
-    - Request body:
+    #### Request body:
 
     ```json
-        {
-            "customer_id" : string,
-            "input_amount" : float,
-            "input_currency": string,
-            "output_currency" :string
-        }
+    {
+      "customer_id": "string",
+      "input_amount": "float",
+      "input_currency": "string",
+      "output_currency": "string"
+    }
     ```
 
     > Example request body:
@@ -38,50 +38,50 @@ FX-Transaction stores how much money received from the customer in the input cur
     }
     ```
 
-    - Response body:
+    #### Response body:
 
     ```json
-        {
-            "transaction_id" : string,
-            "transaction_date" : datetime,
-            "customer_id" : string,
-            "input_amount" : float,
-            "input_currency": string,
-            "output_amount" : float,
-            "output_currency": string
-        }
+    {
+      "transaction_id": "string",
+      "transaction_date": "datetime",
+      "customer_id": "string",
+      "input_amount": "float",
+      "input_currency": "string",
+      "output_amount": "float",
+      "output_currency": "string"
+    }
     ```
 
     > Example response body:
 
-        ```json
-            {
-                "transaction_id" : "transaction_id",
-                "transaction_date" : "2020-01-01T00:00:00.000Z",
-                "customer_id" : "23e-567d-11e",
-                "input_amount" : 23.45,
-                "input_currency": "EUR",
-                "output_amount" : 25.55,
-                "output_currency": "USD"
-            }
-        ```
+    ```json
+    {
+      "transaction_id": "transaction_id",
+      "transaction_date": "2020-01-01T00:00:00.000Z",
+      "customer_id": "23e-567d-11e",
+      "input_amount": 23.45,
+      "input_currency": "EUR",
+      "output_amount": 25.55,
+      "output_currency": "USD"
+    }
+    ```
 
 2.  ### GET /transactions: list all transactions in the system
 
-    - Response body:
+    #### Response body:
 
     ```json
-            [
-                {
-                    "transaction_id" : string,
-                    "transaction_date" : datetime,
-                    "customer_id" : string,
-                    "input_amount" : float,
-                    "input_currency": string,
-                    "output_amount" : float,
-                    "output_currency": string
-                }
-            ]
+    [
+      {
+        "transaction_id": "string",
+        "transaction_date": "datetime",
+        "customer_id": "string",
+        "input_amount": "float",
+        "input_currency": "string",
+        "output_amount": "float",
+        "output_currency": "string"
+      }
+    ]
     ```
 
     > Example response:
@@ -102,18 +102,18 @@ FX-Transaction stores how much money received from the customer in the input cur
 
 3.  ### GET /transactions/<transaction_id>: get the specific transaction by ID
 
-    - Response body:
+    #### Response body:
 
     ```json
-        {
-            "transaction_id" : string,
-            "transaction_date" : datetime,
-            "customer_id" : string,
-            "input_amount" : float,
-            "input_currency": string,
-            "output_amount" : float,
-            "output_currency": string
-        }
+    {
+      "transaction_id": "string",
+      "transaction_date": "datetime",
+      "customer_id": "string",
+      "input_amount": "float",
+      "input_currency": "string",
+      "output_amount": "float",
+      "output_currency": "string"
+    }
     ```
 
     > Example response:
