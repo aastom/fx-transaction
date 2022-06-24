@@ -33,7 +33,9 @@ module Api
       def create
         transaction = Transaction.new(post_params)
         begin
-          transaction.output_amount = Transaction.calculate_output_amount(post_params[:input_amount])
+          if post_params[:input_amount].present?
+            transaction.output_amount = Transaction.calculate_output_amount(post_params[:input_amount])
+          end
           if transaction.save
             render json: ResponseHandler.new({
                                                code: 2002,
