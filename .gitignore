@@ -66,8 +66,8 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
+# Ignore credentials
+/config/master.key
 /config/credentials/development.key
-
 /config/credentials/test.key
-
 /config/credentials/production.key
