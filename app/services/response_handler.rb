@@ -40,6 +40,8 @@ class ResponseHandler
       'Loaded transaction successfully.'
     when 2002
       'Transaction was successfully created.'
+    when 2003
+      'Transaction was successfully updated.'
     else
       'Success'
     end

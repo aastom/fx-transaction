@@ -30,6 +30,40 @@ module Api
                                          }).response, status: :ok
       end
 
+      def update
+        # input_currency
+        # input_amount
+        # output_currency
+        if post_params[:transaction_id].present?
+          puts "post_params: #{post_params.to_json}"
+          transaction = Transaction.find_by_transaction_id(post_params[:transaction_id])
+          puts "transaction: #{transaction}"
+        end
+        if transaction.nil?
+          return render json: ResponseHandler.new({
+                                                    code: 3001,
+                                                    success: false,
+                                                    data: transaction
+                                                  }).response, status: :not_found
+        end
+
+        begin
+          transaction.update!(post_params)
+
+          render json: ResponseHandler.new({
+                                             code: 2003,
+                                             success: true,
+                                             data: Transaction.clean(transaction)
+                                           }).response, status: :accepted
+        rescue ActiveRecord::RecordInvalid => e
+          render json: ResponseHandler.new({
+                                             code: 3001,
+                                             success: false,
+                                             data: e.message
+                                           }).response, status: :bad_request
+        end
+      end
+
       def create
         transaction = Transaction.new(post_params)
         begin
@@ -62,7 +96,8 @@ module Api
       private
 
       def post_params
-        params.require(:transaction).permit(:customer_id, :input_amount, :input_currency, :output_currency)
+        params.require(:transaction).permit(:customer_id, :input_amount, :input_currency, :output_currency,
+                                            :transaction_id)
       end
     end
   end

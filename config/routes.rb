@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post 'transactions', to: 'transactions#create'
       get 'transactions', to: 'transactions#index'
       get 'transactions/:id', to: 'transactions#show'
+      patch 'transactions', to: 'transactions#update'
     end
   end
 end
