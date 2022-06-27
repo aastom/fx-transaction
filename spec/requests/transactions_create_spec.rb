@@ -7,9 +7,9 @@ RSpec.describe 'Transactions Requests', type: :request do
     it 'returns a transaction' do
       post_params = { customer_id: Faker::Crypto.md5,
                       input_amount: Faker::Commerce.price,
-                      input_currency: Faker::Currency.code,
+                      input_currency: "USD",
                       output_amount: Faker::Commerce.price,
-                      output_currency: Faker::Currency.code }
+                      output_currency: "GBP" }
       post '/api/v1/transactions', params: { transaction: post_params }
       json_response = JSON.parse(response.body).deep_symbolize_keys
       expect(json_response[:success]).to eq(true)
@@ -20,9 +20,9 @@ RSpec.describe 'Transactions Requests', type: :request do
     it 'returns a transactions' do
       post_params = {
         input_amount: Faker::Commerce.price,
-        input_currency: Faker::Currency.code,
+        input_currency: "USD",
         output_amount: Faker::Commerce.price,
-        output_currency: Faker::Currency.code
+        output_currency: "GBP"
       }
       post '/api/v1/transactions', params: { transaction: post_params }
       json_response = JSON.parse(response.body).deep_symbolize_keys

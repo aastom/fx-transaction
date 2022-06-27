@@ -11,18 +11,18 @@ RSpec.describe Transaction, type: :model do
   it 'must have a transaction_id' do
     transaction = Transaction.create({ customer_id: Faker::Crypto.md5,
                                        input_amount: Faker::Commerce.price,
-                                       input_currency: Faker::Currency.code,
+                                       input_currency: "USD",
                                        output_amount: Faker::Commerce.price,
-                                       output_currency: Faker::Currency.code })
+                                       output_currency: "GBP" })
 
     expect(transaction).to be_valid
   end
 
   it 'must have an input_amount' do
     transaction = Transaction.create({ customer_id: Faker::Crypto.md5,
-                                       input_currency: Faker::Currency.code,
+                                       input_currency: "USD",
                                        output_amount: Faker::Commerce.price,
-                                       output_currency: Faker::Currency.code })
+                                       output_currency: "GBP" })
 
     expect(transaction).to_not be_valid
   end
@@ -30,8 +30,8 @@ RSpec.describe Transaction, type: :model do
   it 'must have an input_currency' do
     transaction = Transaction.create({ customer_id: Faker::Crypto.md5,
                                        input_amount: Faker::Commerce.price,
-                                       output_amount: Faker::Commerce.price,
-                                       output_currency: Faker::Currency.code })
+                                       output_amount: "USD",
+                                       output_currency: "GBP" })
 
     expect(transaction).to_not be_valid
   end
@@ -40,15 +40,15 @@ RSpec.describe Transaction, type: :model do
     expect do
       Transaction.create({ customer_id: Faker::Crypto.md5,
                            input_amount: Faker::Commerce.price,
-                           input_currency: Faker::Currency.code,
-                           output_currency: Faker::Currency.code })
+                           input_currency: "USD",
+                           output_currency: "EUR" })
     end.to raise_error(ActiveRecord::NotNullViolation)
   end
 
   it 'must have an output_currency' do
     transaction = Transaction.create({ customer_id: Faker::Crypto.md5,
                                        input_amount: Faker::Commerce.price,
-                                       input_currency: Faker::Currency.code,
+                                       input_currency:"EUR",
                                        output_amount: Faker::Commerce.price })
 
     expect(transaction).to_not be_valid
