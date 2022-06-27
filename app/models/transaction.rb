@@ -7,7 +7,7 @@ class Transaction < ApplicationRecord
 
   # validate currency code
   validates :input_currency, :output_currency,
-            inclusion: { in: %w[USD EUR GBP], message: '%{value} is not a valid currency code' }
+            inclusion: { in: %w[USD EUR GBP], message: '%<value>s is not a valid currency code' }
 
   def self.calculate_output_amount(input_amount)
     input_amount * 2.3
