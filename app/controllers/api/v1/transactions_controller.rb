@@ -57,7 +57,7 @@ module Api
                                            }).response, status: :accepted
         rescue ActiveRecord::RecordInvalid => e
           render json: ResponseHandler.new({
-                                             code: 3001,
+                                             code: 3002,
                                              success: false,
                                              data: e.message
                                            }).response, status: :bad_request

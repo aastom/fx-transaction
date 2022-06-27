@@ -53,6 +53,8 @@ class ResponseHandler
       'Transaction could not be created!'
     when 3001
       'Transaction could not be found!'
+    when 3002
+      'Transaction could not be created!'
     else
       'Error'
     end
